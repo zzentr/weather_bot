@@ -27,6 +27,10 @@ async def send_weather(message: Message):
     else:
         await message.answer('Извините, но сервис отправляющий погоду не отвечает, попробуйте чуть позже')
 
+@router.message()
+async def other(message: Message):
+    await message.answer('Отправьте название города, чтобы я смог найти информацию о его погоде!')
+
 def create_message_with_weather(response: dict) -> str:
     main = response['main']
     temp = int(main['temp'])
